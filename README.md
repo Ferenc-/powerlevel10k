@@ -563,6 +563,23 @@ applications on your system. Configure your terminal to use this font:
     normal:
       family: "MesloLGS NF"
   ```
+- **st - simple terminal**: After cloning and makeing config.h with
+   ```bash
+   make config.h
+   ```
+   Apply patch which sets the correct font and make st:
+   ```bash
+   patch  <<<$'--- config.def.h        2020-08-31 23:49:56.637331639 +0200
+   +++ config.h    2020-08-31 23:52:03.289334017 +0200
+   @@ -6,6 +6,7 @@
+     * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
+     */
+    static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+   +static char *font = "MesloLGS NF:pixelsize=16:style=regular:antialias=true:autohint=true";
+    static int borderpx = 2;'
+   make st
+   ```
+   
 
 **IMPORTANT:** Run `p10k configure` after changing terminal font. The old `~/.p10k.zsh` may work
 incorrectly with the new font.
